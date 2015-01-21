@@ -16,7 +16,7 @@ abstract class EntiteManager {
     }
 
     /**
-     * all() retourne l'ensemble des enregistrements de la table users
+     * all() retourne l'ensemble des enregistrements de la table 
      * 
      * @return \User
      */

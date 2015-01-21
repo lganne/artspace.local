@@ -36,8 +36,10 @@ $link->query("
         `username` VARCHAR(30) NOT NULL,
         `password` VARCHAR(100) NOT NULL,
         `salt` VARCHAR(30) NOT NULL,
-        `token` VARCHAR(50) NOT NULL,
-        `role` ENUM('administrator', 'editor', 'visitor') NOT NULL DEFAULT 'visitor',
+        `token` VARCHAR(50) NOT NULL,  
+        `date_created` DATETIME,
+         `date_modif` DATETIME,
+         `role` ENUM('administrator', 'editor', 'visitor') NOT NULL DEFAULT 'visitor',
         PRIMARY KEY (`id`)
         ) ENGINE=InnoDB AUTO_INCREMENT=1 ;
  " )or die("pb create table users");
@@ -93,12 +95,31 @@ $link->query(
       ) ENGINE=InnoDB  AUTO_INCREMENT=1 ;"
         ) or die("pb create table detailcommande");
 // seed tables
-$link->query("
-        INSERT INTO users (`username`, `password`, `role`) VALUES 
-        ('Admin', 'Admin', 'administrator');
-        ")or die("pb insert data users");
+//$link->query("
+//        INSERT INTO produits (`username`, `password`, `role`) VALUES 
+//        ('Admin', 'Admin', 'administrator');
+//        ")or die("pb insert data users");
 
+$link->query("INSERT INTO rubriques(`title`) VALUES ('Personnel');")or die("pb insert data rubriques");
+$link->query("INSERT INTO rubriques(`title`) VALUES ('Professionel');");
+$link->query("INSERT INTO rubriques(`title`) VALUES ('Privilège');");
 
+$link->query("INSERT INTO produits ( `rubriques_id`, `reference`, `prix`, `contenu`, `date_created`, `date_modif`, `status`)
+        VALUES (2,'unlimited',40,
+        'unlimited page gallery& blog,unlimited bande passante,unlimited storage, 10 nom de domain', 
+        NOW(),NOW(),'publish');")or die("pb insert data produits");
+$link->query("INSERT INTO produits ( `rubriques_id`, `reference`, `prix`, `contenu`, `date_created`, `date_modif`, `status`)
+        VALUES (2,'standart',30,
+        '200 pages gallery& blog,500 Mo bande passante,500 Mo storage, 5 nom de domain', 
+        NOW(),NOW(),'publish');")or die("pb insert data produits");
+$link->query("INSERT INTO produits ( `rubriques_id`, `reference`, `prix`, `contenu`, `date_created`, `date_modif`, `status`)
+        VALUES (1,'unlimited',20,
+        'unlimited page gallery& blog,unlimited bande passante,1 To storage, 3 nom de domain', 
+        NOW(),NOW(),'publish');")or die("pb insert data produits");
+$link->query("INSERT INTO produits ( `rubriques_id`, `reference`, `prix`, `contenu`, `date_created`, `date_modif`, `status`)
+        VALUES (1,'standart',8,
+        '200 pages gallery& blog,100 Mo bande passante,100 Mo storage, 1 nom de domain', 
+        NOW(),NOW(),'publish');")or die("pb insert data produits");
 
 mysqli_close($link);
 

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
     <head>
 
@@ -28,31 +27,23 @@
                     <li><a href="/" id="select">Tour</a></li>
                     <li><a href="#">Templates</a></li>
                     <li><a href="#">Developers</a></li>
-                    <li><a href="pricing/1">Pricing</a></li>
+                    <li><a href="/pricing/1">Pricing</a></li>
                     <li><a href="#">Login</a></li>
+                    <li><a href="/formulaire">Register</a></li>
                 </ul>
             </nav>
 
         </header>
-         <!--***************** section  banner *************** -->
-     
-     <section class="blanc"  id="pricing-banner">
-        
-        <div class="container">
-            <h1>FREE 14 DAY TRIAL WITH 24/7 SUPPORT</h1><br/>
-            <a href="#" class="boutonArrondi btNoir">Get Started</a>
-               
-        </div>
-     </section>
-     <br/><br/>
+       
      
      <!-- *******************   colonne droite et gauche *************-->
-     <div class="container">
+     
+      
         <?php
                 echo $content;
         // put your code here
         ?>
-     </div>
+     <!--</div>-->
         <!-- ******************** footer   ******************************************-->
         <footer>
             <div class="container">

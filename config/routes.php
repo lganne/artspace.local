@@ -16,9 +16,13 @@ return [
         'connect' => 'controller\PricingController:liste',
          'params' =>'id'
     ],
-    'PanierController_user' => [
-        'pattern' => '\/user\/[a-zA-Z0-9\-_\.]+\/(?P<id>[1-9][0-9]*)',
-        'connect' => 'controller\PanierController:user',
-        'params' =>'id'
-    ]
+        'UserController_formulaire' => [
+        'pattern' => '\/formulaire',
+        'connect' => 'controller\UserController:formulaire'
+      
+    ],
+     'UserController_enregistrement' => [
+        'pattern' => '\/enregistrement',
+        'connect' => 'controller\UserController:enregistrement'
+     ]
 ];

@@ -1,11 +1,11 @@
 <?php
 
-namespace Service;
+namespace service;
 
 /**
  * Description of Router
  *
- * @author antoine
+ * 
  */
 class Router 
 {
