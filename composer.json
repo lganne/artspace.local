@@ -1,0 +1,21 @@
+{
+     "name": "autoload/autoload",
+    "description": "artspace",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "anne lg",
+            "email": "alg@yahoo.fr"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload":{
+        "psr-4":{
+            "":"src"
+        },
+        "classmap": ["src/"] 
+       }
+    }
+
+

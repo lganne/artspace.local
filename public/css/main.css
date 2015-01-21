@@ -1,0 +1,955 @@
+/*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+    
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+audio,
+canvas,
+img,
+video {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /**text-indent: -9999px;*/
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+
+/*******************************************  perso   **/
+  body
+  {
+    background:#fff;
+    font-family:"Avantgarde","Helvetica",sans-serif;
+    color: #5d5d5d;
+    font-size: 16px;
+    
+  }
+  
+ 
+  
+  header
+  {
+    width: auto;
+    margin:auto;
+    background:#ffffff;
+    
+  }
+  /************************************   logo + nav ********************************/
+  
+  #logo
+  {
+    padding-left: 10%; /* 150px;*/
+    float:left;
+    padding-top: 3%;
+    /*display:inline-block;*/
+   
+  }
+  
+   a:hover /* Lorsque la souris passe sur un des liens */    
+{
+        color: #000; 
+        
+}
+  
+ 
+  
+  nav
+  {
+    float:right;
+    width: auto;
+    padding-top: 25px;
+    padding-right: 30px;
+    
+  }
+  
+nav li
+  {
+    margin-left:2px;
+    float:left; 
+  }
+
+nav ul li a
+{
+    display:block;
+    width:80px;
+    color:#B8B8B8;
+    text-decoration:none;
+    text-align:center;
+    padding:32px;
+    letter-spacing: .2em;
+    font-weight: bold;
+    
+     
+   
+}
+
+#select
+{
+
+color:black;
+}
+
+/* *********************************** section  general ****************************/
+
+hr
+{
+    clear:both;
+}
+h1
+{
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .1em;
+}
+h2
+{
+    text-transform: uppercase;
+    font-weight: 300;
+              /*letter-spacing: .1em;*/
+    
+    
+}
+.souligne
+{
+    width: auto;
+  height:0;  
+}
+
+.centrer
+{
+  text-align: center;  
+}
+
+.souligneMilieu::After   /* pour ajouter avant le texte  */
+{
+    content:'';
+    display:block;
+    margin:auto;
+    width: 50%;
+    height: 2px;
+    background:black;
+    margin-top: 2%;
+  
+    
+}
+
+.souligneDroite::after
+{
+    content:'';
+    display:block;
+    width: 45%;
+    height: 2px;
+    background:black;
+    margin-top: 2%;  
+}
+
+
+
+img {
+	max-width: 100%;
+        height: auto;
+}
+
+
+
+.gris
+{
+  background-color: #f5f5f5;
+  border-top:1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  
+}
+.blanc
+{
+   background-color: #fff; 
+}
+
+.container {
+  width: 65%;
+  margin: auto;
+  padding:5% 0 5% 0;
+}
+
+.boutonArrondi
+{
+    width: 25%; /*250px;*/
+    border:none;
+    padding:15px 50px 15px 50px;
+    border-radius: 25px;
+    text-decoration:none;
+    /*font:bold 1em ;*/
+	
+}
+
+.btGris
+{
+    background-color:#e5e5e5;
+    color:black;
+}
+.btNoir
+{
+     background-color:#181818;
+     color:white;
+}
+.btJaune
+{
+    color:black;
+    background-color:#fff186;
+}
+
+.colorvert
+{
+    color:#55ca90;
+}
+
+.colDroite,.colGauche
+{
+    display:inline-block;
+    vertical-align: top;
+    width: 45%;
+    padding:2%;
+    
+}
+figcaption
+{
+    padding:3%;
+}
+
+/************************   section particularite ********************/
+
+
+/* **************  banner presentation   *****************/
+#banner
+{
+    clear: both;
+    background:url("../img/tour/hero-tour.jpg");
+    background-size:100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top:175px;
+    padding-bottom:149px;
+    color:#fff;
+    position :relative;
+}
+
+#banner h1
+{
+   
+    text-transform: uppercase;
+   
+}
+
+#banner h1::before,#pricing-banner h1::before  /* pour ajouter avant le texte  */
+{
+    content:'';
+    display:block;
+    margin:auto;
+    width: 300px;
+    height: 5px;
+    background:white;
+    margin-bottom: 2%;
+    
+}
+#banner p
+{
+   
+    padding-bottom: 40px;
+}
+.watch
+{
+    padding-left: 15px;
+    color:#fff;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+#nomArtiste
+{
+    position:absolute;
+    height:0;
+    bottom:5%;
+    right:3%;
+    font-size:12px;
+    text-align: right;
+    border-right: solid;
+    padding-right: 10px;
+   
+}
+#nomArtiste>strong
+{
+    text-transform: uppercase;
+    opacity: 1;
+    
+}
+#nomArtiste span
+{
+    opacity: .5; 
+}
+#footbanner
+{
+    clear: both;
+}
+
+#footbanner img
+{
+    padding-left: 2%;
+    opacity:0.5;
+}
+
+
+/********************************** section stunning ***************/
+#stunning
+{
+   background: url("../img/tour/large-cinema-display.png") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom:20%;
+    
+}
+#stunning p
+{
+    padding-bottom:10%;
+}
+
+.carrousel
+{
+    margin:auto;
+    position:relative;
+}
+.carrousel a
+{
+    display:inline-block;
+    vertical-align: middle;
+    position:absolute;
+    top:50%;
+    
+}
+.slider
+{
+    display:inline-block;
+    max-width: 100%;
+    max-height: 95%;
+    /*position:absolute;*/
+    
+}
+.infGauche
+{
+    left:-25px;
+   
+}
+.supDroite
+{
+    right:-20px;
+}
+
+
+
+
+/*********************** blog state *********************/
+
+#imgBlogHaut
+{
+   
+  
+  background-repeat: no-repeat;
+  background-position: top;
+    height: 200px;
+}
+#imgBlogBas
+{
+   
+   background-position: 30%bottom; 
+}
+.slider-blog
+{
+    background: url("../img/tour/sqsp-browser-yourbrand.png") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-bottom:20%; 
+}
+#import img,#shares img,#push img
+{
+    opacity: .5;
+    padding:5px;
+}
+#import
+{
+float:left;
+width:30%;
+padding-right: 3%;
+padding-bottom: 5%
+}
+#shares
+{
+  float:left;
+    width:30%;
+    padding-right: 10px;
+    padding-bottom: 5%
+}
+#push
+{
+   width:30%;
+   float:left;
+   padding-right: 10px;
+    padding-bottom: 5%
+}
+
+
+
+/******************** section connect *********************/
+.container-bis
+{
+  width: 75%;
+  margin: auto;
+  
+}
+
+/*************************************  Contributor *************/
+
+.presPersonne {
+    background: #55ca90;
+    height: 98px;
+    color:#fff;
+    
+}
+.presPersonne > img
+{
+    border-radius: 50%;
+    position: relative;
+    top:-1px;
+    left:-35px;
+}
+.presPersonne div{
+  display:inline-block;  
+}
+
+blockquote
+{
+    /*font-family: "Times New Roman",serif;*/
+    max-width: 100%;
+    font-style:italic;
+    font-size:14px;
+    letter-spacing: .1em;
+    
+}
+
+blockquote>strong
+{
+     font-size:30px;
+     font-weight: bold;
+     font-family: "cursive";
+     
+}
+
+/********************************************* page pricing **********************************/
+
+.espPricing
+{
+    padding:2%;
+}
+
+.espPricing h3
+{
+    font-weight: 300;
+    color:#000;
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
+    display:inline; /* pour que le souligne ne depasse pas */
+}
+#pricing-banner
+{
+    clear:both;
+    background:url("../img/pricing/hero-pricing.jpg");
+    background-size:100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top:175px;
+    padding-bottom:175px;
+}
+#pricing-banner h1
+{
+   font:bold 3em ;
+    color:#fff;
+    text-transform: uppercase;
+   
+}
+
+
+
+.blockNoir
+{
+   
+    padding: 80px 60px 80px 60px;
+    background: #191919;
+    color:#fff;
+   text-align: center;
+}
+
+.blockNoir h1, .blockNoir h2
+{
+  text-align: center;
+  text-transform: uppercase;
+  
+}
+
+.blockNoir h1
+{
+    font-weight: 300;
+    font-size: large;
+    letter-spacing: 0.8em;
+    border-bottom: 1px solid;
+    padding-bottom: 1em;
+    display:inline;
+    
+}
+.blockNoir h2
+{
+    padding-top:4em;
+    font-weight: 300;
+    line-height: 30px;
+    font-size: 0.8em;
+}
+    
+
+
+.blockNoir p
+{
+    color:#E8E8E8;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.blockNoir strong
+{
+    font-size: 7em;
+    /*line-height: 25px;*/
+   
+}
+.blockNoir sup
+{
+position: relative;
+bottom: 1px;
+font-size: .3em;
+line-height: .5em;
+vertical-align:super;
+
+   
+}
+
+.vert
+{
+    
+    width:15%;
+    height: 25%;
+    border-radius:50%;
+    background: #55ca90;
+    /*padding:3% 3% 5% 1%;*/
+    text-align: center;
+    color:#fff;
+    position: relative;
+   
+   
+}
+
+
+.pastille {
+    background: #55ca90;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+.pastille-large {
+    width: 90px;
+    height: 90px;
+    line-height: 24px;
+    font-size: 16px;
+    padding-top: 18px;
+    box-sizing: border-box;
+}
+
+.espPricing {
+    position: relative;
+}
+.espPricing .pastille {
+    position: absolute;
+    right: 80px;
+    top:0;
+    
+}
+.espPricing .pastille-large {
+    position: absolute;
+    right: -30px;
+    top:0;
+    
+}
+
+.listePricing 
+  {
+    
+    clear:both;
+    margin:0;
+    padding:0;
+    background:#f7f7f7;
+    
+  }
+  
+  .listePricing li
+  {
+    
+    border: solid 1px grey;
+     padding:3% 2% 3% 30%;
+    list-style-type: none; /* puce*/
+    position: relative;
+  }
+
+.listePricing li a
+{
+    
+    color:#C0C0C0;
+    text-decoration:none;
+    
+    
+}
+.listePricing strong
+{
+    color:black;
+}
+
+/*****   on cache la div quand l'ecran est de taille normal **/
+/*** elle ne sera afficher que pour les mobiles ******/
+.tailleMobile
+{
+    visibility: hidden;
+    height: 0;
+}
+.tailleNormal
+{
+  visibility: visible;
+    height: auto; 
+}
+
+/*******  bulle info ******************/
+
+.bulle a{
+    color:#fff;
+    text-shadow:0 -1px 0 black;
+    
+    }
+.bulle a:hover,a:focus
+{
+    background:rgba(0,0,0,.4);
+    box-shadow:0 1px 0 rgba(255,255,255,.4);
+}
+
+
+.bulle a span
+{
+    position:absolute;
+    width:400px;
+     margin-top:53px;
+     margin-left:-25px;
+     padding:20px;
+      color: #fff;/*#09c;*/
+     background:rgba(0,0,0,.9);
+     border-radius:3px;
+     box-shadow:0 0 2px rgba(0,0,0,.5);
+     transform:scale(0) rotate(-12deg);
+     transition:all .25s;
+     opacity:0;
+     z-index:99;
+     }
+.info
+{
+   
+    font-size:14px;
+    padding:10px;
+    
+}
+
+.bulle a:hover span, a:focus span
+{
+     opacity:1;
+    transform:scale(1) rotate(0);
+}
+
+/*****************************   footer **************************************/
+
+footer
+{
+   clear: both;
+   overflow: hidden;  
+  background-color: #181818;
+  color: #5d5d5d;
+}
+footer ul
+{
+    margin:0;
+    padding:0;
+}
+
+footer ul li
+{
+    float:left;
+    list-style-type:none;
+    width:20%;
+     
+}
+footer ul li a
+
+{
+    
+    display:block;
+    color:#cccccc;
+    text-decoration:none;
+    text-align:left;
+    padding:10px 50px 10px 0;
+   
+   
+}
+.orange:hover /* Lorsque la souris passe sur un des liens */    
+{
+        color: orange; 
+        /*background: #000; */
+}
+
+.footdDessous ul
+{
+    padding:0;
+    margin:0;
+}
+
+.footDessous li
+{
+  
+    clear:both;
+     width:100px;
+ }
+
+
+.footDessous li a
+{
+   color:#5d5d5d;
+    padding:5px 0 5px 0;
+    font-size:13px ;
+    font-weight: 700;
+    text-align: left;
+ }
+
+
+
+#try
+{
+  
+   width: 30%;
+   float:right;
+   padding-right: 30px;
+  
+}
+#try a
+{
+        width: 250px;
+	border:none;
+	padding:15px 50px 15px 50px;
+	border-radius: 25px;
+	background:#e5e5e5;
+        text-decoration:none;
+	font:bold ;
+	color:black;
+} 
+
+
+

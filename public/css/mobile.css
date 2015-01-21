@@ -1,0 +1,178 @@
+
+/************ general *********************/
+.container {
+  width: 90%;
+  margin: auto;
+ 
+}
+
+h1{
+    font-size:1em;
+}
+
+.boutonArrondi
+{
+    padding:2% 10%;
+}
+
+.colDroite,.colGauche
+{
+    display:inline-block;
+    /*vertical-align: top;*/
+    width: 100%;
+    /*padding:2%;*/
+    
+}
+
+/************** menu **************/
+#logo
+{
+    padding:1%;
+   
+    
+}
+nav,nav li
+  {
+    clear:both;
+    float:none;
+    padding:0;
+    margin:0;
+   
+   
+    
+  }
+nav ul
+{
+    clear:both;
+    border: 1px solid;
+    padding:0;
+    margin:0;
+}
+nav ul li
+{
+    
+    border: 1px solid;
+    
+}
+
+nav ul li a
+{
+    padding:0;
+    padding-top:5%;
+    padding-bottom:5%;
+    text-align:center;
+    width: 100%;
+      
+}
+
+.espPricing .pastille
+{
+  right: 20px;  
+    
+}
+
+.espPricing .pastille-large {
+    right: -3px;
+     top:-12px;
+}
+
+
+/******************* pricing ***********************/
+ 
+#pricing-banner
+{
+    padding:0;
+    margin:0;
+}
+
+#pricing-banner h1
+{
+   font-size:1em;
+   
+}
+
+.tailleNormal
+{
+  visibility: hidden;
+  height: 0;  
+}
+
+.tailleMobile
+{
+    visibility: visible;
+    height: auto;
+}
+
+
+
+
+ /************ tour  **********/
+ #banner
+{
+   padding-top:5%;;
+   padding-bottom:5%; 
+ }
+ #banner h1::before,#pricing-banner h1::before
+ {
+    height: 0;
+ }
+ #banner p
+{
+    padding-bottom:0;
+ }
+ 
+ .watch
+{
+    padding:0;
+     padding-top:3%;
+    display:block;
+    color:black;
+   
+ }
+ 
+ #nomArtiste
+{
+    height: 0;
+ }
+ 
+ #import,#shares,#push
+ {
+    float:none;
+    padding:0;
+    width: 80%;
+ }
+ 
+/**************** footer *************/
+
+footer
+{
+    position:relative;
+}
+footer ul li
+{
+    clear:both;
+      width:25%;
+     
+}
+footer ul li a
+
+{
+    padding: 0;
+}
+#try
+{
+   position:absolute;
+   right: 1%;
+   top:0;
+   width: 40%;
+   
+}
+
+#try a
+{
+        /*width: auto;*/
+        /*padding:6% 10% ;*/
+        /*border-radius:45%;*/
+        padding:4% 10%;
+        margin-top:2%;
+}
