@@ -35,6 +35,7 @@ $link->query("
         `id` INT(10) UNSIGNED AUTO_INCREMENT,
         `username` VARCHAR(30) NOT NULL,
         `password` VARCHAR(100) NOT NULL,
+        `email` VARCHAR(150) NOT NULL,
         `salt` VARCHAR(30) NOT NULL,
         `token` VARCHAR(50) NOT NULL,  
         `date_created` DATETIME,

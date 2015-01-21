@@ -23,9 +23,18 @@ class UserController
     public function enregistrement()
     {
     
-           if (isset($_POST['ok']))
+           if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password'])  )
           {
-                  echo  $_POST['login'];
+               $var=new \service\DiverService();
+               $salt=$var->generateRandomString(30);
+               $token=$var->generateRandomString(50);
+               // on rajoute le salt au mot de passe
+               $password=$salt.$_POST['password'].$salt;
+               // on crypte le mot de passe
+               $pwd=$var->codepassword($password);
+               $dat;
+               $data=array('username'=>$_POST['login'],'password'=>$pwd,'email'=>$_POST['mail'],'salt'=>$salt,'token'=>$token,'role'=>'visitor');
+               $this->user->save($data);
            }
     }
 }
