@@ -17,7 +17,7 @@ class DefaultController {
     
     public function affiche()
     {
-        header('Location: http://artspace.local/tour.html');
+        header('Location: http://artspace.local/tour.php');
     }
     
     

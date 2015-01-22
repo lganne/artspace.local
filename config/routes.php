@@ -16,13 +16,26 @@ return [
         'connect' => 'controller\PricingController:liste',
          'params' =>'id'
     ],
-        'UserController_formulaire' => [
-        'pattern' => '\/formulaire',
-        'connect' => 'controller\UserController:formulaire'
+        'UserController_inscription' => [
+        'pattern' => '\/inscription',
+        'connect' => 'controller\UserController:inscription'
       
     ],
      'UserController_enregistrement' => [
         'pattern' => '\/enregistrement',
         'connect' => 'controller\UserController:enregistrement'
-     ]
+     ],
+    'UserController_login' => [
+        'pattern' => '\/login',
+        'connect' => 'controller\UserController:login'
+     ],
+    'UserController_loginValidation' => [
+        'pattern' => '\/loginValidation',
+        'connect' => 'controller\UserController:loginValidation'
+     ],
+     'UserController_logout' => [
+        'pattern' => '\/logout',
+        'connect' => 'controller\UserController:logout'
+     ],
+    
 ];

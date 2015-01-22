@@ -16,7 +16,7 @@ class UserController
        $this->vue=new \view\UserVue();
     }
     
-    public function formulaire()
+    public function inscription()
     {
         $this->vue->form();
     }
@@ -36,5 +36,46 @@ class UserController
                $data=array('username'=>$_POST['login'],'password'=>$pwd,'email'=>$_POST['mail'],'salt'=>$salt,'token'=>$token,'role'=>'visitor');
                $this->user->save($data);
            }
+    }
+    
+    public function login()
+    {
+        $this->vue->formLogin();
+    }
+    
+    public function loginValidation()
+    {
+      
+        
+
+        $log=$_POST['login'];
+        $pass=$_POST['password'];
+        $rep=$this->user->veriflog($pass,$log);
+        $user=array();
+//            var_dump($rep);
+//            die();
+        if ($rep['reponse']==true)
+        {
+            foreach ($rep['donnee'] as $detail)
+            {
+              array_push($user,$detail);
+            }
+            $_SESSION['user']=$user;
+        var_dump($_SESSION['user']);
+//             die();
+            header("Location: http://artspace.local/pricing/1"); 
+            
+        }
+        else
+        {
+            $mess="Il y a une erreur dans le login ou le mot de passe";
+        }
+       
+    }
+    
+    public function logout()
+    {
+        $_SESSION['user']="";
+         header("Location: http://artspace.local/pricing/1"); 
     }
 }

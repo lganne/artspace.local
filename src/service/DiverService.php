@@ -7,7 +7,7 @@ namespace service;
  */
 class DiverService {
     
-    function generateRandomString($length = 10)
+    static function generateRandomString($length = 10)
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -19,7 +19,7 @@ class DiverService {
     return $randomString;
     }
     
-    function codepassword($motpasse)
+    static function codepassword($motpasse)
     {
         $i=0;
         while($i<30)

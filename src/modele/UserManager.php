@@ -34,4 +34,21 @@ public function save($tabDonne)
         return $results;
     }
 
+    public function verifLog ($pass,$login)
+    {
+        $rep=false;
+        $sql="select * from users where username = :login";
+        $query=$this->pdo->prepare($sql);
+        $query->execute(array('login'=>$login));
+        $data=$query->fetch(\PDO::FETCH_OBJ);
+        
+        $motPasse=$data->salt.$pass.$data->salt;
+        $verifPass=\service\DiverService::codepassword($motPasse);
+        If ($verifPass==$data->password)
+        {
+            $rep=true;
+        }
+        $donnee=array("id"=>$data->id,"login"=>$data->username,"token"=>$data->token,"role"=>$data->role);
+        return array('reponse'=>$rep,'donnee'=>$donnee);
+    }
 }
