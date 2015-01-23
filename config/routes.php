@@ -37,5 +37,13 @@ return [
         'pattern' => '\/logout',
         'connect' => 'controller\UserController:logout'
      ],
-    
+     'CommandeController_ajoutPanier' => [
+        'pattern' => '\/ajoutPanier\/(?P<id>[1-9][0-9]*)',
+        'connect' => 'controller\CommandeController:ajoutPanier',
+        'params' =>'id' 
+       ],
+         'CommandeController_Panier' => [
+        'pattern' => '\/Panier',
+        'connect' => 'controller\CommandeController:Panier'
+        ]
 ];

@@ -45,7 +45,8 @@ $_session['login']=array();
                              if (!empty($_SESSION['user']))
                             {
                                 $nom=$_SESSION['user'][1];
-                                echo '<li><a href="/login">Bonjour'.$nom.'</a></li>';
+                                echo '<li><a href="/login">Bonjour'
+                                . ''.$nom.'</a></li>';
                                 echo '<li><a href="/historique">historique</a></li>';
                                 echo '<li><a href="/logout">Log out</a></li>';
                             }
@@ -54,6 +55,10 @@ $_session['login']=array();
                                echo '<li><a href="/login">Login</a></li>';
                                echo '<li><a href="/inscription">Register</a></li>';
                           }
+                            if (!empty($_SESSION['panier']))
+                             {
+                                 echo '<li><a href="/Panier">Panier '.count($_SESSION['panier']).'</a></li>';
+                             }
                     ?>
                 </ul>
             </nav>

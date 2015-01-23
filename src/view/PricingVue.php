@@ -29,7 +29,7 @@ class PricingVue
                                 }
                            echo "</ul>";
                         }        
-//             echo '<a href="http://miniblog.local/index.php/post/form">Ajouter un post</a>';
+
                         if ($donnee!=null)
                         {
                                 foreach ($donnee as $unProduit)
@@ -52,14 +52,15 @@ class PricingVue
   function detail ($produit)
   {
        ob_start();
-         
+                        
                 if($produit!=null)
                   {
                       foreach ($produit as $unProduit)
                       {
                           echo '<br><br><br><div class="container">';
-                          echo '<a href="#">Ajouter au panier</a>';
-                          echo "<div class=espPricing>";
+                         echo '<a href="http://artspace.local/ajoutPanier/'.$unProduit->id.'">Ajouter au panier</a>';
+                          $_SESSION['page']='pricing/'.$unProduit->reference."/".$unProduit->id;
+                         echo "<div class=espPricing>";
                           echo " <div class='blockNoir'>";
                                             echo " <h1>".$unProduit->reference."</h1>";
                                             echo '<h2><strong><sup>$</sup>'.$unProduit->prix.'</strong>/Mo</h2>' 

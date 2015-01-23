@@ -4,7 +4,7 @@ $database = include __DIR__ . '/config/database.php';
 require_once __DIR__.'/vendor/autoload.php';
 
 session_start();
-$_session['panier']=array();
+
 // les routes
 $routes = include __DIR__.'/config/routes.php';
 

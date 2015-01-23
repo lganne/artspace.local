@@ -26,10 +26,13 @@
 
                 <ul>
                     <li><a href="/" id="select">Tour</a></li>
-                    <li><a href="#">Templates</a></li>
-                    <li><a href="#">Developers</a></li>
+                    <!--<li><a href="#">Templates</a></li>-->
+                    <!--<li><a href="#">Developers</a></li>-->
+                                     
                     <li><a href="/pricing/1">Pricing</a></li>
                     <?php
+                        
+                           
                              if (!empty($_SESSION['user']))
                             {
                                 $nom=$_SESSION['user'][1];
@@ -42,6 +45,11 @@
                                echo '<li><a href="/login">Login</a></li>';
                                echo '<li><a href="/inscription">Register</a></li>';
                           }
+                            if (!empty($_SESSION['panier']))
+                             {
+                                 echo '<li><a href="/Panier">Panier '.count($_SESSION['panier']).'</a></li>';
+                             }
+                          
                     ?>
                     
                 </ul>
