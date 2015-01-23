@@ -24,7 +24,7 @@ class ProduitManager extends EntiteManager
         return $results;
     }
     
-    public function query($query) {
-        echo 'a faire';
-    }
+//    public function query($query) {
+//        echo 'a faire';
+//    }
 }

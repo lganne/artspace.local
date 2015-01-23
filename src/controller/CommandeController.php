@@ -35,4 +35,33 @@ class CommandeController {
       //  var_dump($tabListe);
         $this->view->liste($tabListe);
     }
+    
+    public function panierSup($id)
+    {
+        unset($_SESSION['panier'][$id]);
+      header("Location: $_SERVER[HTTP_REFERER]" );
+    }
+    
+    public function validCommand()
+    {
+         $command=new \modele\CommandeManager();
+         $detail=new \modele\DetailCommandes();
+         
+        if (empty($_SESSION['user']))
+        {
+            header("Location: http://artspace.local/login"); 
+        }
+        $idcommand=$command->insert($_SESSION['user']);
+        foreach ($_SESSION['panier'] as $idproduit)
+        {
+               $produit=$this->produit->find($idproduit);
+              foreach ($produit as $unProduit)
+              {
+                   $idDetail= $detail->insert($unProduit,$idcommand);
+              }
+              
+          }
+          
+        
+    }
 }

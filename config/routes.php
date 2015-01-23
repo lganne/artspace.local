@@ -45,5 +45,16 @@ return [
          'CommandeController_Panier' => [
         'pattern' => '\/Panier',
         'connect' => 'controller\CommandeController:Panier'
+        ],
+    'CommandeController_panierSup' => [
+        'pattern' => '\/panierSup\/(?P<id>[1-9][0-9]*)',
+        'connect' => 'controller\CommandeController:panierSup',
+        'params' =>'id'
+        
+        ],
+          'CommandeController_validCommand' => [
+        'pattern' => '\/validCommand',
+        'connect' => 'controller\CommandeController:validCommand'
         ]
+    
 ];

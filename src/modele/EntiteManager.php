@@ -60,7 +60,7 @@ abstract class EntiteManager {
         return $results;
     }
 
-    abstract public function query($query);
+   // abstract public function query($query);
     
 }
 
