@@ -33,7 +33,7 @@ class DetailCommandes  extends EntiteManager
     {
         $tab=[];
         $idCd=  intval($idCd);
-       $sql=$this->pdo->prepare("select * from detailcommandes where commandes_id= :idCd");
+       $sql=$this->pdo->prepare("select * from detailcommandes where commandes_id= :idCd ");
         $sql->execute(array('idCd'=>$idCd));
          $result= $sql->fetchAll(\PDO::FETCH_OBJ);
         

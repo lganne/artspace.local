@@ -59,6 +59,10 @@ return [
       'CommandeController_historique' => [
         'pattern' => '\/historique',
         'connect' => 'controller\CommandeController:historique'
+        ],
+          'AdminController_home' => [
+        'pattern' => '\/admin',
+        'connect' => 'controller\AdminController:admin'
         ]
     
 ];

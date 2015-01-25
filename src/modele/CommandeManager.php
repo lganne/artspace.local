@@ -35,7 +35,7 @@ class CommandeManager extends EntiteManager
          $query = sprintf("
                 SELECT *
                 FROM `{$this->table}` 
-                WHERE users_id=%d", $idUser );
+                WHERE users_id=%d order by date_modif DESC", $idUser );
         // gestion des erreurs PDOException
         $stmt = $this->pdo->query($query);
         $data = $stmt->fetchall(\PDO::FETCH_OBJ);

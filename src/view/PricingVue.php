@@ -14,11 +14,12 @@ class PricingVue
         ob_start();
 //              <!--***************** section  banner *************** -->
      
-                $html=' <section class="blanc"  id="pricing-banner"> <div class="container">'
-                            .'<h1>FREE 14 DAY TRIAL WITH 24/7 SUPPORT</h1><br/>'
-                            .'<a href="#" class="boutonArrondi btNoir">Get Started</a>'
-                            .'</div> </section><div class="container">';
-                 echo $html;
+//                $html=' <section class="blanc"  id="pricing-banner"> <div class="container">'
+//                            .'<h1>FREE 14 DAY TRIAL WITH 24/7 SUPPORT</h1><br/>'
+//                            .'<a href="#" class="boutonArrondi btNoir">Get Started</a>'
+//                            .'</div> </section><div class="container">';
+//                 echo $html; 
+            echo '</div> </section><div class="container">';
                       if ($menu!=null)
                         {
                           echo "<ul>";

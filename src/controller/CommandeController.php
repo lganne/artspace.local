@@ -78,6 +78,7 @@ class CommandeController {
               $tabProduit=[];
               foreach ($data as $detailCd)
               {
+                  
                   $idp=$detail->findByCommand($detailCd->id);
                   array_push($tabProduit, $idp);
               }

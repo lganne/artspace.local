@@ -38,6 +38,11 @@
                                 $nom=$_SESSION['user'][1];
                                 echo '<li><a href="/login">Bonjour '.$nom.'</a></li>';
                                 echo '<li><a href="/historique">historique</a></li>';
+                     
+                                if($_SESSION['user'][3]=='administrator')
+                                {
+                                    echo '<li><a href="/admin">admin</a></li>';
+                                }
                                 echo '<li><a href="/logout">Log out</a></li>';
                             }
                             else 

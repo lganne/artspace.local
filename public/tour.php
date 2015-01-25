@@ -38,16 +38,20 @@ $_session['login']=array();
                    
                 <ul>
                     <li><a href="tour.php" id="select">Tour</a></li>
-                    <li><a href="#">Templates</a></li>
-                    <li><a href="#">Developers</a></li>
+<!--                    <li><a href="#">Templates</a></li>
+                    <li><a href="#">Developers</a></li>-->
                     <li><a href="http://artspace.local/pricing/1">Pricing</a></li>
                     <?php
                              if (!empty($_SESSION['user']))
                             {
                                 $nom=$_SESSION['user'][1];
-                                echo '<li><a href="/login">Bonjour'
+                                echo '<li><a href="/login">Bonjour '
                                 . ''.$nom.'</a></li>';
                                 echo '<li><a href="/historique">historique</a></li>';
+                                 if($_SESSION['user'][3]=='administrator')
+                                {
+                                    echo '<li><a href="/admin">admin</a></li>';
+                                }
                                 echo '<li><a href="/logout">Log out</a></li>';
                             }
                             else 
