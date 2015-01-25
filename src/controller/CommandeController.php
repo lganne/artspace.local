@@ -8,8 +8,11 @@ namespace controller;
 class CommandeController {
     private $produit;
     private $view;
+    private $command;
+    
     public function __construct() {
         $this->produit=new \modele\ProduitManager();
+        $this->command=new \modele\CommandeManager();
          $this->view= new \view\PanierVue();
     }
     
@@ -44,24 +47,43 @@ class CommandeController {
     
     public function validCommand()
     {
-         $command=new \modele\CommandeManager();
+         $total=0;
          $detail=new \modele\DetailCommandes();
          
         if (empty($_SESSION['user']))
         {
             header("Location: http://artspace.local/login"); 
         }
-        $idcommand=$command->insert($_SESSION['user']);
+        $idcommand=$this->command->insert($_SESSION['user']);
         foreach ($_SESSION['panier'] as $idproduit)
         {
                $produit=$this->produit->find($idproduit);
               foreach ($produit as $unProduit)
               {
-                   $idDetail= $detail->insert($unProduit,$idcommand);
+                  $total=$total+$unProduit->prix;
+                  $detail->insert($unProduit,$idcommand);
               }
-              
+                        
           }
-          
-        
+             $this->command->updateTotal($total,$idcommand);
+           $_SESSION['panier']=[];
+           header('location:http://artspace.local/historique');
+           
     }
+          
+    public function historique()
+    {
+             $detail=new \modele\DetailCommandes();
+              $data=$this->command->commandUser($_SESSION['user'][0]);
+              $tabProduit=[];
+              foreach ($data as $detailCd)
+              {
+                  $idp=$detail->findByCommand($detailCd->id);
+                  array_push($tabProduit, $idp);
+              }
+        //      var_dump($tabProduit);
+                $this->view->historique($data,$tabProduit);
+    }
+        
+    
 }

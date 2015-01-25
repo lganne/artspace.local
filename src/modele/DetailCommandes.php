@@ -28,4 +28,15 @@ class DetailCommandes  extends EntiteManager
              $idDetail=$this->pdo->lastInsertId();
              return $idDetail;
     }
+    
+    public function findByCommand($idCd)
+    {
+        $tab=[];
+        $idCd=  intval($idCd);
+       $sql=$this->pdo->prepare("select * from detailcommandes where commandes_id= :idCd");
+        $sql->execute(array('idCd'=>$idCd));
+         $result= $sql->fetchAll(\PDO::FETCH_OBJ);
+        
+            return $result;
+    }
 }

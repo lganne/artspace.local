@@ -55,6 +55,10 @@ return [
           'CommandeController_validCommand' => [
         'pattern' => '\/validCommand',
         'connect' => 'controller\CommandeController:validCommand'
+        ],
+      'CommandeController_historique' => [
+        'pattern' => '\/historique',
+        'connect' => 'controller\CommandeController:historique'
         ]
     
 ];
