@@ -40,7 +40,7 @@ class PanierVue
           include 'layout.php';
     }
     
-    public function historique($data,$tabdetail)
+    public function historique($tabdetail)
     {
          ob_start();
          $i=0;
@@ -51,18 +51,33 @@ class PanierVue
 //         
             foreach ($tabdetail as $detail)
             {
-                if (!empty($detail))
-                {$html.='<table border="solid 1px black"><th>numero</th><th>Nom</th><th>detail</th><th>prix</th>';}
-                foreach ($detail as $produit)
-               {
-//                    $ligne=\array_search($produit->commandes_id, $data);
-//                    var_dump($ligne);
-                     $html.='<tr><td>'.$produit->commandes_id.'</td><td>'.$produit->reference.'</td><td>'.$produit->contenu.'</td><td>'.$produit->prix.'</td></tr>';
-               }
-               $html.="</table>";
-            }
-//              $html.="</tr></table>";
-//         }
+                if  (is_array($detail))
+                {    
+                        if (!empty($detail))
+                        { $html.='<table border="solid 1px black"><th>numero</th><th>Nom</th><th>detail</th><th>prix</th>'; }
+                        foreach ($detail as $produit)
+                       {
+                   //         var_dump($produit);
+                             $html.='<tr><td>'.$produit->commandes_id.'</td><td>'.$produit->reference.'</td><td>'.$produit->contenu.'</td><td>'.$produit->prix.'</td></tr>';
+                       }
+                       $html.="</table>";
+                 }
+                 else 
+                 {
+                      if (\strpos($detail,"."))
+                     {
+                         $html.=" <h4>Total : ".$detail."</h4>";
+                     }
+                     else
+                     {
+                         $date = new \DateTime($detail);
+                         $html.=" <h4>Commande du : ".$date->format('d/m/Y H:i:s')."</h4>";
+                     }
+                    
+                 }
+     
+ }
+                  
          $html.='</div>';
          echo $html;
           $content= ob_get_clean();

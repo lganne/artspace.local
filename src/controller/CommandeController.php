@@ -78,12 +78,12 @@ class CommandeController {
               $tabProduit=[];
               foreach ($data as $detailCd)
               {
-                  
+                  array_push($tabProduit,$detailCd->date_created,$detailCd->total);
                   $idp=$detail->findByCommand($detailCd->id);
-                  array_push($tabProduit, $idp);
+                   array_push($tabProduit, $idp);
               }
         //      var_dump($tabProduit);
-                $this->view->historique($data,$tabProduit);
+                $this->view->historique($tabProduit);
     }
         
     

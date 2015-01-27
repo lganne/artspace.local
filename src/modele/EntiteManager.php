@@ -59,8 +59,14 @@ abstract class EntiteManager {
         }
         return $results;
     }
+    
+    public function delete($id)
+    {
+       $query=sprintf(" delete from {$this->table} where id=%d ",$id) ;
+       $stmt=$this->pdo->query($query);
+    }
 
-   // abstract public function query($query);
+  
     
 }
 

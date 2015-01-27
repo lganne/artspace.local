@@ -46,7 +46,7 @@ return [
         'pattern' => '\/Panier',
         'connect' => 'controller\CommandeController:Panier'
         ],
-    'CommandeController_panierSup' => [
+          'CommandeController_panierSup' => [
         'pattern' => '\/panierSup\/(?P<id>[1-9][0-9]*)',
         'connect' => 'controller\CommandeController:panierSup',
         'params' =>'id'
@@ -60,9 +60,25 @@ return [
         'pattern' => '\/historique',
         'connect' => 'controller\CommandeController:historique'
         ],
-          'AdminController_home' => [
+          'AdminController_admin' => [
         'pattern' => '\/admin',
         'connect' => 'controller\AdminController:admin'
-        ]
+        ],
+          'AdminController_liste' => [
+        'pattern' => '\/admin\/liste\/(?P<entite>[a-zA-Z]*)',
+        'connect' => 'controller\AdminController:liste',
+         'params' =>'entite'
+         ],
+        'AdminController_supUsers' => [
+        'pattern' => '\/admin\/usersSup\/(?P<id>[1-9][0-9]*)',
+        'connect' => 'controller\AdminController:supUsers',
+        'params' =>'id'
+        ],
+          'AdminController_suppression' => [
+        'pattern' => '\/admin\/sup\/(?P<entite>[a-zA-Z]*)\/(?P<id>[1-9][0-9]*)',
+        'connect' => 'controller\AdminController:suppression',
+         'params' =>'id'
+       
+         ],
     
 ];

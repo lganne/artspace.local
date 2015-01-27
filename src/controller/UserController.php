@@ -52,8 +52,7 @@ class UserController
         $pass=$_POST['password'];
         $rep=$this->user->veriflog($pass,$log);
         $user=array();
-//            var_dump($rep);
-//            die();
+        
         if ($rep['reponse']==true)
         {
             foreach ($rep['donnee'] as $detail)
@@ -61,9 +60,7 @@ class UserController
               array_push($user,$detail);
             }
             $_SESSION['user']=$user;
-        var_dump($_SESSION['user']);
-//             die();
-            header("Location: http://artspace.local/pricing/1"); 
+             header("Location: http://artspace.local/pricing/1"); 
             
         }
         else
@@ -75,7 +72,10 @@ class UserController
     
     public function logout()
     {
-        $_SESSION['user']="";
+        $_SESSION['user']=[];
          header("Location: http://artspace.local/pricing/1"); 
     }
+    
+    
+    
 }

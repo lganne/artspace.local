@@ -29,4 +29,28 @@ class DiverService {
         }
         return $motpasse;
     }
+    /**
+     * 
+     * @param type $tableau de Session user
+     * @return boolean
+     * verif si les element du tableau de session sont valide
+     */
+    static function verifUser($tabSession)
+    {
+        $user=new \modele\UserManager();
+        $result=$user->find($tabSession[0]);
+         foreach ($result as $unResult)
+        {
+                if($unResult->username==$tabSession[1]  && $unResult->token==$tabSession[2] && $unResult->role==$tabSession[3] )
+                {
+                    return true;
+                }
+            else
+                { 
+                return false;
+                }
+        }
+      
+       
+    }
 }

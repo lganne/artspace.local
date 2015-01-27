@@ -25,50 +25,12 @@
             <nav>
 
                 <ul>
-                    <li><a href="/" id="select">Tour</a></li>
-                    <!--<li><a href="#">Templates</a></li>-->
-                    <!--<li><a href="#">Developers</a></li>-->
-                                     
-                    <li><a href="/pricing/1">Pricing</a></li>
-                    <?php
-                                      
-                           
-                     if (!empty($_SESSION['user']))
-                      {
-                           
-                               $veri=  service\DiverService::VerifUser($_SESSION['user']);
-                           
-                                if ($veri!=true)
-                               {
-                                       $_SESSION['user']=[];
-                                      // a faire message d'erreur
-                                       goto sanslogin;
-                                 }
-                                             
-                                $nom=$_SESSION['user'][1];
-                                echo '<li><a href="/login">Bonjour '.$nom.'</a></li>';
-                                echo '<li><a href="/historique">historique</a></li>';
-                     
-                                if($_SESSION['user'][3]=='administrator')
-                                {
-                                    echo '<li><a href="/admin">admin</a></li>';
-                                }
-                                echo '<li><a href="/logout">Log out</a></li>';
-                            }
-                            /****** non loger ****/
-                       else 
-                      {
-                                sanslogin: ;
-                               echo '<li><a href="/login">Login</a></li>';
-                               echo '<li><a href="/inscription">Register</a></li>';
-                      }
-                      //********** panier *********//
-                            if (!empty($_SESSION['panier']))
-                             {
-                                 echo '<li><a href="/Panier">Panier '.count($_SESSION['panier']).'</a></li>';
-                             }
-                          
-                    ?>
+                    <li><a href="/" id="select">retour au sites</a></li>
+                                           
+                    <li><a href="/admin/liste/Produit">Produits</a></li>
+                     <li><a href="/admin/liste/Rubrique">Rubriques</a></li>
+                      <li><a href="/admin/liste/User">Users</a></li>
+                       <li><a href="/admin/liste/Commande">Commandes</a></li>
                     
                 </ul>
             </nav>

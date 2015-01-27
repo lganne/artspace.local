@@ -34,7 +34,7 @@ class CommandeManager extends EntiteManager
     {
          $query = sprintf("
                 SELECT *
-                FROM `{$this->table}` 
+                FROM `{$this->table}`
                 WHERE users_id=%d order by date_modif DESC", $idUser );
         // gestion des erreurs PDOException
         $stmt = $this->pdo->query($query);
