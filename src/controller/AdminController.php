@@ -64,16 +64,47 @@ class AdminController
         $this->view->{$nomVue}($data);
     }
     
-    public function suppression($id)
+    public function supRubrique($id)
     {
-        $uri=  parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
-        $arrayChaine=explode("/",$uri);
-        $var=$arrayChaine[3];
-        $nom='modele\\'.$var.'Manager';
-         $entite=new $nom;
-         $data=$entite->delete($id);
-          $nomVue="liste".$var;
-        $this->liste($var);
+
+        $produit=new \modele\ProduitManager();
+       $tabprod= $produit->findby($id);
+        if(!empty($tabprod))
+        {
+            $_SESSION["mess"]=" Cette rubrique a des produits associé, vous ne pouvez pas le supprimer";
+           $this->liste("Rubrique");
+           exit;
+        }
+              $entite=new \modele\RubriqueManager();
+            $data=$entite->delete($id);
+             $this->liste("Rubrique");
+    }
+    
+    public function Rubrique($id)
+    {
+        $data=[];
+        if($id!=0)
+        {
+            $rub=new \modele\RubriqueManager();
+            $data=$rub->find($id);
+        }
+        $this->view->rubrique($data);
+    }
+    
+    public function rubEnregistrement()
+    {
+       $rub=new \modele\RubriqueManager();
+       // modification  
+       if ($_POST['id']!=0)
+       {
+           $rub->update($_POST['id'], $_POST['titre']);
+         }
+         //ajout
+     else
+       {
+            $rub->insert($_POST['titre']) ;
+       }
+        $this->liste("Rubrique");
     }
 }
    

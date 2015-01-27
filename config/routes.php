@@ -74,11 +74,19 @@ return [
         'connect' => 'controller\AdminController:supUsers',
         'params' =>'id'
         ],
-          'AdminController_suppression' => [
-        'pattern' => '\/admin\/sup\/(?P<entite>[a-zA-Z]*)\/(?P<id>[1-9][0-9]*)',
-        'connect' => 'controller\AdminController:suppression',
+          'AdminController_supRubrique' => [
+        'pattern' => '\/admin\/supRubrique\/(?P<id>[1-9][0-9]*)',
+        'connect' => 'controller\AdminController:supRubrique',
          'params' =>'id'
-       
          ],
+           'AdminController_Rubrique' => [
+           'pattern' => '\/admin\/Rubrique\/(?P<id>[0-9][0-9]*)',
+            'connect' => 'controller\AdminController:Rubrique',
+           'params' =>'id'
+         ],
+         'AdminController_rubEnregistrement' => [
+           'pattern' => '\/admin\/rubrique\/enregistrement',
+            'connect' => 'controller\AdminController:rubEnregistrement'
+           ],
     
 ];

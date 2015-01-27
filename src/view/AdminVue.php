@@ -34,7 +34,7 @@ class AdminVue
                     . "<td>".$unUser->date_created."</td>"
                     . "<td>".$unUser->role."</td>"
                     . '<td><a href="">Modifier</a></td>'
-                    . '<td><a href="/admin/usersSup/'.$unUser->id.'">Supprimer</a></td></tr>';
+                    . '<td><a href="/admin/supUser/'.$unUser->id.'">Supprimer</a></td></tr>';
         }
         $html.="</table></div>";
         echo $html;
@@ -58,7 +58,7 @@ class AdminVue
                     . "<td>".$unUser->contenu."</td>"
                     . "<td>".$unUser->prix."</td>"
                     . '<td><a href="">Modifier</a></td>'
-                    . '<td><a href="/admin/sup/Produit/'.$unUser->id.'">Supprimer</a></td></tr>';
+                    . '<td><a href="/admin/supProduit/'.$unUser->id.'">Supprimer</a></td></tr>';
         }
          $html.="</table></div>";
         echo $html;
@@ -70,6 +70,7 @@ class AdminVue
     {
         ob_start();
         $html='<br><br><div class="container">';
+         $html.='<a href="/admin/Rubrique/0">Ajouter</a>';
         if(!empty( $_SESSION['mess']))
         {
             echo '<p>'.$_SESSION['mess'].'</p>';
@@ -78,8 +79,8 @@ class AdminVue
         $html.="<table border=solid 1px black><tr><th>Nom</th><th></th><th></th></tr>";
         foreach ($data as $unUser)
         {
-            $html.="<tr><td>".$unUser->title."</td>" . '<td><a href="">Modifier</a></td>'
-                    . '<td><a href="/admin/usersSup/'.$unUser->id.'">Supprimer</a></td></tr>';
+            $html.="<tr><td>".$unUser->title."</td>" . '<td><a href="/admin/Rubrique/'.$unUser->id.'">Modifier</a></td>'
+                    . '<td><a href="/admin/supRubrique/'.$unUser->id.'">Supprimer</a></td></tr>';
          }
          $html.="</table></div>";
         echo $html;
@@ -91,6 +92,7 @@ class AdminVue
     {
         ob_start();
         $html='<br><br><div class="container">';
+        $html.='<a href="http://artspace.local/admin/ajoutComande/0">Ajouter</a>';
         if(!empty( $_SESSION['mess']))
         {
             echo '<p>'.$_SESSION['mess'].'</p>';
@@ -100,9 +102,36 @@ class AdminVue
         foreach ($data as $unUser)
         {
             $html.="<tr><td>".$unUser->date_created."</td>" . '<td><a href="">Modifier</a></td>'
-                    . '<td><a href="/admin/usersSup/'.$unUser->id.'">Supprimer</a></td></tr>';
+                    . '<td><a href="/admin/supCommande/'.$unUser->id.'">Supprimer</a></td></tr>';
          }
          $html.="</table></div>";
+        echo $html;
+         $content=  ob_get_clean();
+         include 'layout_admin.php'; 
+    }
+    
+    public function rubrique($data)
+    {
+        ob_start();
+        $html='<br><br><div class="container">';
+       $html.='<form action="/admin/rubrique/enregistrement" method="post" >';
+       /*** ajout **/
+        if(empty($data))
+        {
+            $html.='<input type="hidden" name="id" value="0">';
+            $html.='Nom<input type="text" name="titre" >';
+        }
+//        /**** modif **/
+         else
+       {
+            foreach($data as $rub)
+            {
+                 $html.='<input type="hidden" name="id" value="'.$rub->id.'" >';
+                $html.='Nom<input type="text" name="titre" value="'.$rub->title.'" >';
+            }
+       }
+        $html.='<input type="submit" name="submit" value="valider" >';
+       $html.='</form></div>';
         echo $html;
          $content=  ob_get_clean();
          include 'layout_admin.php'; 

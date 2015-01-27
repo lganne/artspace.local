@@ -63,7 +63,14 @@ abstract class EntiteManager {
     public function delete($id)
     {
        $query=sprintf(" delete from {$this->table} where id=%d ",$id) ;
-       $stmt=$this->pdo->query($query);
+        try{  
+              $stmt=$this->pdo->query($query);
+            }
+             catch(Exception $e)
+             {   
+                 return "erreur delete"; 
+                 
+             }
     }
 
   
