@@ -183,7 +183,8 @@ class Config {
             'Ŷ' => 'Y',
             'ý' => 'y',
             'ÿ' => 'y',
-            'ŷ' => 'y',];
+            'ŷ' => 'y',
+            ' '=>'_',];
 
         $s = preg_replace('/ /', '_', strtr($slug, $rules));
 

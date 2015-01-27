@@ -79,14 +79,25 @@ return [
         'connect' => 'controller\AdminController:supRubrique',
          'params' =>'id'
          ],
-           'AdminController_Rubrique' => [
-           'pattern' => '\/admin\/Rubrique\/(?P<id>[0-9][0-9]*)',
-            'connect' => 'controller\AdminController:Rubrique',
-           'params' =>'id'
-         ],
+          
          'AdminController_rubEnregistrement' => [
            'pattern' => '\/admin\/rubrique\/enregistrement',
             'connect' => 'controller\AdminController:rubEnregistrement'
            ],
+             'AdminController_form' => [
+           'pattern' => '\/admin\/form\/[a-zA-Z0-9\-_\.]+\/(?P<id>[0-9][0-9]*)',
+            'connect' => 'controller\AdminController:form',
+           'params' =>'id'
+         ],
+         'AdminController_produitEnregistrement' => [
+           'pattern' => '\/admin\/produit\/enregistrement',
+            'connect' => 'controller\AdminController:produitEnregistrement'
+           ],
+         'AdminController_supProduit' => [
+         'pattern' => '\/admin\/supProduit\/(?P<id>[1-9][0-9]*)',
+         'connect' => 'controller\AdminController:supProduit',
+         'params' =>'id'
+         ],
+    
     
 ];

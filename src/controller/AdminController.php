@@ -25,6 +25,7 @@ class AdminController
       {
            header("location:http://artspace.local/");
       }
+      
    }
     public function admin()
     {
@@ -55,14 +56,38 @@ class AdminController
      }
      
      //******************************   generique **********************************//
+     //  fonction appeller part toute les entites d'admin 
      public function liste($entite)
     {
         $nom='modele\\'.$entite.'Manager';
-        $user=new  $nom;             //modele\UserManager;
+        $user=new  $nom;             
         $data=$user->all();
         $nomVue="liste".$entite;
         $this->view->{$nomVue}($data);
     }
+    
+     public function form($id)
+    {
+          $chaine=explode("/",URI);
+       
+          $nom=  '\\modele\\'.$chaine[3].'Manager';
+          $data=[];
+           if($chaine[3]=="Produit")
+           {
+               $rub=new \modele\RubriqueManager();
+               array_push($data, $rub->all());
+           }
+        if($id!=0)  // modification
+        {
+            $rub=new $nom;
+            array_push( $data,$rub->find($id));
+        }
+       
+        $nomVue="form".$chaine[3];
+        $this->view->$nomVue($data);
+    }
+    
+    /**********************************************************************************************/
     
     public function supRubrique($id)
     {
@@ -80,16 +105,6 @@ class AdminController
              $this->liste("Rubrique");
     }
     
-    public function Rubrique($id)
-    {
-        $data=[];
-        if($id!=0)
-        {
-            $rub=new \modele\RubriqueManager();
-            $data=$rub->find($id);
-        }
-        $this->view->rubrique($data);
-    }
     
     public function rubEnregistrement()
     {
@@ -106,5 +121,33 @@ class AdminController
        }
         $this->liste("Rubrique");
     }
+    
+    
+    /************************************* Produit **********************************/
+        
+     public function ProduitEnregistrement()
+    {
+       $rub=new \modele\ProduitManager();
+       // modification  
+       if ($_POST['id']!=0)
+       {
+           $rub->update($_POST);
+         }
+         //ajout
+     else
+       {
+            $rub->insert($_POST) ;
+       }
+        $this->liste("Produit");
+    }
+    
+     public function supProduit($id)
+    {
+            $entite=new \modele\ProduitManager();
+            $data=$entite->delete($id);
+            $this->liste("Produit");
+    }
+    
+   
 }
    
