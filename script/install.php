@@ -62,8 +62,7 @@ $link->query(
         `contenu` TEXT NOT NULL,
         `date_created` DATETIME,
          `date_modif` DATETIME,
-        `status` ENUM('publish', 'unpublish', 'draft', 'trash') NOT NULL DEFAULT 'publish',
-        PRIMARY KEY (`id`),
+           PRIMARY KEY (`id`),
         CONSTRAINT `fk_produits_rubriques_id` FOREIGN KEY (`rubriques_id`) REFERENCES `rubriques` (`id`) ON DELETE SET NULL
       ) ENGINE=InnoDB  AUTO_INCREMENT=1 ;"
         ) or die("pb create table produits");
@@ -76,7 +75,7 @@ $link->query(
         `total`  DECIMAL (10,2),
         `date_created` DATETIME,
          `date_modif` DATETIME,
-        `status` ENUM('valider', 'supprimer', 'en attente') NOT NULL DEFAULT 'valider',
+        `status` ENUM('valider', 'payer', 'en attente') NOT NULL DEFAULT 'valider',
         PRIMARY KEY (`id`),
         CONSTRAINT `fk_commandes_users_id` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) 
       ) ENGINE=InnoDB  AUTO_INCREMENT=1 ;"

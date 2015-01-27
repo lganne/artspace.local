@@ -94,17 +94,20 @@ class AdminVue
     {
         ob_start();
         $html='<br><br><div class="container">';
-        $html.='<a href="/admin/form/Commande/0">Ajouter</a>';
-        if(!empty( $_SESSION['mess']))
+         if(!empty( $_SESSION['mess']))
         {
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-        $html.="<table border=solid 1px black><tr><th>Nom</th><th></th><th></th></tr>";
-        foreach ($data as $unUser)
+        $html.="<table border=solid 1px black><tr><th>Numero</th><th>Date</th><th>Total</th><th>Status</th<</tr>";
+        foreach ($data as $unCde)
         {
-            $html.="<tr><td>".$unUser->date_created."</td>" . '<td><a href="/admin/form/Commande/'.$unUser->id.'">Modifier</a></td>'
-                    . '<td><a href="/admin/supCommande/'.$unUser->id.'">Supprimer</a></td></tr>';
+            $date = new \DateTime($unCde->date_created);
+            $html.="<tr><td>".$unCde->id."</td>"
+                    . "<td>".$date->format('d/m/Y H:i')."</td>"
+                    . "<td>".$unCde->total."</td>"
+                    . "<td>".$unCde->status."</td>"
+                    . '<td><a href="/admin/form/Commande/'.$unCde->id.'">Modifier</a></td></tr>';
          }
          $html.="</table></div>";
         echo $html;
@@ -144,7 +147,7 @@ class AdminVue
     
     public function formProduit($data)
     {
-        ob_start();
+       ob_start();
        $html='<br><br><div class="container">';
        $html.='<form action="/admin/produit/enregistrement" method="post" >';
        /*** ajout **/
@@ -158,32 +161,54 @@ class AdminVue
                  { $html.= '<option value="'.$unRub->id.'">'.$unRub->title.'</option>';}
              }
              $html.='</select><br>';
-              $html.='Nom<input type="text" name="reference" required><br>';
+             $html.='Nom<input type="text" name="reference" required><br>';
              $html.='Detail<textarea  name="contenu" >séparer les élements par des virgules</textarea><br>';
              $html.='Prix<input type="text" name="prix" ><br>';
-         }
+        }
         else
-            {
-                  
-                  $html.='Selectionner la rubrique<select name="rubrique">';
-                    foreach ($data[0] as $rub)
-                    {
-                        $html.= '<option value="'.$rub->id.'" >'.$rub->title.'</option>';
-                     }
-                         $html.='</select><br>';
-                      foreach($data[1] as $prod)
+        {
+                   $html.='Selectionner la rubrique<select name="rubrique">';
+                   foreach($data[1] as $prod)
                       {
-                          $html.='<input type="hidden" name="id" value="'.$prod->id.'">';
-                          $html.='Nom<input type="text" name="reference"  value="'.$prod->reference.'"required><br>';
-                          $html.='Detail<textarea  name="contenu" value="'.$prod->contenu.'">'.$prod->contenu.'</textarea><br>';
-                          $html.='Prix<input type="text" name="prix" value="'.$prod->prix.'"><br>';
+                          foreach ($data[0] as $rub)
+                            {
+                                if($prod->rubriques_id==$rub->id)
+                                {
+                                  $html.= '<option value="'.$rub->id.'" selected>'.$rub->title.'</option>';
+                                }
+                                else 
+                                {   
+                                  $html.= '<option value="'.$rub->id.'">'.$rub->title.'</option>';
+                                 }
+                            }
+                            $html.='</select><br>';
+                            $html.='<input type="hidden" name="id" value="'.$prod->id.'">';
+                            $html.='Nom<input type="text" name="reference"  value="'.$prod->reference.'"required><br>';
+                            $html.='Detail<textarea  name="contenu" value="'.$prod->contenu.'">'.$prod->contenu.'</textarea><br>';
+                            $html.='Prix<input type="text" name="prix" value="'.$prod->prix.'"><br>';
                       }
-                         
-             }
-         $html.='<input type="submit" name="submit" value="valider" >';
+           }
+          $html.='<input type="submit" name="submit" value="valider" >';
          $html.='</form></div>';
          echo $html;
          $content=  ob_get_clean();
          include 'layout_admin.php'; 
     }
+    
+    
+//    public function formCommande($data)
+//    {
+//        echo "form";
+//         ob_start();
+//       $html='<br><br><div class="container">';
+//       $html.='<form action="/admin/commande/enregistrement" method="post" >';
+//       /*** ajout **/
+//      
+//            $html.='<input type="hidden" name="id" value="0">';
+//            $html.='Date<input type="text" name="" >';
+//       
+//          echo $html;
+//         $content=  ob_get_clean();
+//         include 'layout_admin.php'; 
+//    }
 }

@@ -9,6 +9,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://artspace.local/css/normalize.min.css" />
+        <link rel="stylesheet" href="http://artspace.local/css/bootstrap.min.css" />
         <link rel="stylesheet" href="http://artspace.local/css/main.css" />
         <link rel="stylesheet" media="screen and (max-device-width: 640px)" href="http://artspace.local/css/mobile.css" />
         <script src="<?php echo service\Config::url('dist/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', null); ?>"></script>
