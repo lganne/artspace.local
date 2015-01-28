@@ -267,5 +267,37 @@ class AdminVue
          $content=  ob_get_clean();
          include 'layout_admin.php';
      }
-
+     
+         public function formCommande($data)
+    {
+             ob_start();
+            
+            $html='<br><br><div class="container">';
+            
+          //   $html.='<div class="form-group">';
+             foreach ($data[0] as $cde )
+             {
+                 $html.='<h3>Commande N° '.$cde->id.'</h3></br>';
+            $html.='<form action="/admin/cde/enregistrement" method="post" class="form-horizontal" role="form">';
+                  $date = new \DateTime($cde->date_created);
+                 $html.='<input type="hidden" name="id" value="'.$cde->id.'">';
+                  $html.='<label for="">'.$date->format('d/m/Y H:i').'</label><br>';
+                    $html.='<label for="">Total : '.$cde->total.' $</label><br>';
+                  $html.= '<div class="form-group">'
+                            .' <label for="sel1">Status:</label>'
+                             .' <select class="form-control" id="sel1" name="status">'
+                             .' <option value="valider">valider</option>'
+                             .'<option value="payer">payer</option>'
+                             .' <option value="en attente">en attente</option>'
+                            .'<option value="annuler">annuler</option></select></div>';
+             }
+              $html.= "<input  type='submit' name='ok'  value='valider'  class='btn btn-info'>";
+             $html.='</form></div>';
+             echo $html;
+             $content=  ob_get_clean();
+             include 'layout_admin.php';
+      }
+      
+      
+      
 }

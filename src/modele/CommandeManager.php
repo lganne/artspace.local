@@ -54,4 +54,10 @@ class CommandeManager extends EntiteManager
         return $data;
     }
     
+    public function statusUpdate($id,$status)
+    {
+        $req = $this->pdo->prepare("UPDATE commandes set status = :status where id = :idCommande");
+            $req->execute(array('status' => $status,'idCommande' => $id)) ;
+    }
+    
 }

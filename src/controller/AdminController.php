@@ -175,7 +175,13 @@ class AdminController
        $this->view->listeCommande($data);
     }
     
-    
+    public function cdeEnregistrement()
+      {
+          //var_dump($_POST);
+          $cde=new \modele\CommandeManager();
+          $cde->statusUpdate($_POST['id'], $_POST['status']);
+            $this->listeCommande();
+      }
     
 }
    

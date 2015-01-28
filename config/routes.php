@@ -79,10 +79,13 @@ return [
         'connect' => 'controller\AdminController:supRubrique',
          'params' =>'id'
          ],
-          
-         'AdminController_rubEnregistrement' => [
+          'AdminController_rubEnregistrement' => [
            'pattern' => '\/admin\/rubrique\/enregistrement',
             'connect' => 'controller\AdminController:rubEnregistrement'
+           ],
+            'AdminController_cdeEnregistrement' => [
+           'pattern' => '\/admin\/cde\/enregistrement',
+            'connect' => 'controller\AdminController:cdeEnregistrement'
            ],
              'AdminController_form' => [
            'pattern' => '\/admin\/form\/[a-zA-Z0-9\-_\.]+\/(?P<id>[0-9][0-9]*)',
