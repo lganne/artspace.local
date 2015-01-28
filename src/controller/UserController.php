@@ -22,9 +22,9 @@ class UserController
     }
     public function enregistrement()
     {
-    
            if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['password'])  )
           {
+              
                $var=new \service\DiverService();
                $salt=$var->generateRandomString(30);
                $token=$var->generateRandomString(50);
@@ -32,8 +32,13 @@ class UserController
                $password=$salt.$_POST['password'].$salt;
                // on crypte le mot de passe
                $pwd=$var->codepassword($password);
-               $dat;
-               $data=array('username'=>$_POST['login'],'password'=>$pwd,'email'=>$_POST['mail'],'salt'=>$salt,'token'=>$token,'role'=>'visitor');
+               $role='visitor';
+             
+               if(isset($_POST['role']))
+               {
+                   $role=$_POST['role'];
+               }
+               $data=array('username'=>$_POST['login'],'password'=>$pwd,'email'=>$_POST['mail'],'salt'=>$salt,'token'=>$token,'role'=>$role);
                $this->user->save($data);
            }
     }
@@ -76,6 +81,7 @@ class UserController
          header("Location: http://artspace.local/pricing/1"); 
     }
     
+   
     
     
 }

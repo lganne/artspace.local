@@ -10,6 +10,7 @@ class UserManager extends \modele\EntiteManager
 
 public function save($tabDonne)
 {
+    
      $sql=sprintf("insert into ".$this->table.
              " (username,password,email,salt,token,date_created,date_modif,role) values ('%s','%s','%s','%s','%s',NOW(),NOW(),'%s')",
                            $tabDonne['username'],
@@ -50,5 +51,19 @@ public function save($tabDonne)
         }
         $donnee=array("id"=>$data->id,"login"=>$data->username,"token"=>$data->token,"role"=>$data->role);
         return array('reponse'=>$rep,'donnee'=>$donnee);
+    }
+    
+     public function update($data)
+    {
+          $sql = "update {$this->table} set username=:username,email=:mail,role=:role,date_modif=NOW()"
+        . "where id= :id";
+        $sth = $this->pdo->prepare($sql);
+        $sth->execute(array(':username'=>$data["login"],
+            ':mail'=>$data["mail"],
+            ':role'=>$data["role"],
+            ':id'=>$data['id']));
+
+              
+        
     }
 }

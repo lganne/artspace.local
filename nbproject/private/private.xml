@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/artspace.local/src/modele/EntiteManager.php</file>
-            <file>file:/C:/wamp/www/artspace.local/src/modele/RubriqueManager.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/view/PanierVue.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/view/layout_admin.php</file>
             <file>file:/C:/wamp/www/artspace.local/src/modele/CommandeManager.php</file>
             <file>file:/C:/wamp/www/artspace.local/src/controller/AdminController.php</file>
             <file>file:/C:/wamp/www/artspace.local/src/view/AdminVue.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/view/UserVue.php</file>
             <file>file:/C:/wamp/www/artspace.local/src/modele/UserManager.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/service/Config.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/modele/RubriqueManager.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/modele/ProduitManager.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/view/layout.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/controller/UserController.php</file>
             <file>file:/C:/wamp/www/artspace.local/config/routes.php</file>
+            <file>file:/C:/wamp/www/artspace.local/src/controller/CommandeController.php</file>
         </group>
     </open-files>
 </project-private>

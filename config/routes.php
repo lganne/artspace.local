@@ -98,6 +98,13 @@ return [
          'connect' => 'controller\AdminController:supProduit',
          'params' =>'id'
          ],
-    
+           'AdminController_listeCommande' => [
+        'pattern' => '\/admin\/listeCommande',
+        'connect' => 'controller\AdminController:listeCommande'
+         ],
+     'AdminController_enregistrementUser' => [
+        'pattern' => '\/admin\/user\/enregistrement',
+        'connect' => 'controller\AdminController:enregistrementUser'
+         ]
     
 ];

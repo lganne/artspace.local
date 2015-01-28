@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="http://artspace.local/css/bootstrap.min.css" />
         <link rel="stylesheet" href="http://artspace.local/css/main.css" />
         <link rel="stylesheet" media="screen and (max-device-width: 640px)" href="http://artspace.local/css/mobile.css" />
-        <script src="<?php echo service\Config::url('dist/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js', null); ?>"></script>
+          
     </head>
 
     <body>
@@ -31,7 +31,7 @@
                     <li><a href="/admin/liste/Produit">Produits</a></li>
                      <li><a href="/admin/liste/Rubrique">Rubriques</a></li>
                       <li><a href="/admin/liste/User">Users</a></li>
-                       <li><a href="/admin/liste/Commande">Commandes</a></li>
+                       <li><a href="/admin/listeCommande">Commandes</a></li>
                     
                 </ul>
             </nav>
@@ -105,6 +105,8 @@
 
         <script src="http://artspace.local/js/jquery-2.1.1.min.js"></script>
         <script src="http://artspace.local/js/caroussel2.js"></script>
+        <script src="http://artspace.local/js/bootstrap-select.min.js"></script>
+         <script src="http://artspace.local/js//jquery-2.1.1.min.js"></script>
     </body>
 </html>
 

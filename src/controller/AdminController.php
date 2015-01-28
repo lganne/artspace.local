@@ -50,9 +50,21 @@ class AdminController
         $this->liste("User");
     }
     
-     public function ModifUsers($id)
+     public function enregistrementUser()
     {
-         // a faire
+           
+           if ($_POST['id']!=0)
+           {
+               $user=new \modele\UserManager();
+               $user->update($_POST);
+           }
+         else 
+             {
+                $user=new UserController();
+                 $user->enregistrement();
+              }
+           $this->liste("User");
+         
      }
      
      //******************************   generique **********************************//
@@ -77,6 +89,7 @@ class AdminController
                $rub=new \modele\RubriqueManager();
                array_push($data, $rub->all());
            }
+           
         if($id!=0)  // modification
         {
             $rub=new $nom;
@@ -124,7 +137,10 @@ class AdminController
     
     
     /************************************* Produit **********************************/
-        
+     
+    
+    
+    
      public function ProduitEnregistrement()
     {
        $rub=new \modele\ProduitManager();
@@ -149,6 +165,16 @@ class AdminController
     }
     
    /***************************************** commande ******************************/
+    
+    public function listeCommande()
+    {
+        $cde=new \modele\CommandeManager();
+                
+        $data=$cde->allUser();
+       //var_dump($data);
+       $this->view->listeCommande($data);
+    }
+    
     
     
 }

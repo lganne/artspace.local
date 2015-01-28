@@ -35,7 +35,7 @@ class AdminVue
                     . "<td>".$unUser->date_created."</td>"
                     . "<td>".$unUser->role."</td>"
                     . '<td><a href="/admin/form/User/'.$unUser->id.'">Modifier</a></td>'
-                    . '<td><a href="/admin/supUser/'.$unUser->id.'">Supprimer</a></td></tr>';
+                    . '<td><a href="/admin/usersSup/'.$unUser->id.'">Supprimer</a></td></tr>';
         }
         $html.="</table></div>";
         echo $html;
@@ -72,7 +72,7 @@ class AdminVue
     {
         ob_start();
         $html='<br><br><div class="container">';
-         $html.='<a href="/admin/Rubrique/0">Ajouter</a>';
+         $html.='<a href="/admin/form/Rubrique/0">Ajouter</a>';
         if(!empty( $_SESSION['mess']))
         {
             echo '<p>'.$_SESSION['mess'].'</p>';
@@ -99,11 +99,12 @@ class AdminVue
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-        $html.="<table border=solid 1px black><tr><th>Numero</th><th>Date</th><th>Total</th><th>Status</th<</tr>";
+        $html.="<table border=solid 1px black><tr><th>Numero</th><th>Login</th><th>Date</th><th>Total</th><th>Status</th<</tr>";
         foreach ($data as $unCde)
         {
             $date = new \DateTime($unCde->date_created);
             $html.="<tr><td>".$unCde->id."</td>"
+                    . "<td>".$unCde->username."</td>"
                     . "<td>".$date->format('d/m/Y H:i')."</td>"
                     . "<td>".$unCde->total."</td>"
                     . "<td>".$unCde->status."</td>"
@@ -195,20 +196,76 @@ class AdminVue
          include 'layout_admin.php'; 
     }
     
-    
-//    public function formCommande($data)
-//    {
-//        echo "form";
-//         ob_start();
-//       $html='<br><br><div class="container">';
-//       $html.='<form action="/admin/commande/enregistrement" method="post" >';
-//       /*** ajout **/
-//      
-//            $html.='<input type="hidden" name="id" value="0">';
-//            $html.='Date<input type="text" name="" >';
-//       
-//          echo $html;
-//         $content=  ob_get_clean();
-//         include 'layout_admin.php'; 
-//    }
+    /******* user ***/
+     public function formUser($data)
+    {
+         ob_start();
+         $html='<br><br><div class="container">';
+         $html.='<form action="/admin/user/enregistrement" method="post" class="form-horizontal" role="form">';
+          $html.='<div class="form-group">';
+         $html.='<label for="login">Login:</label>';
+         /*** ajout **/
+        if(empty($data))
+        {
+             $html.='<input type="hidden" name="id" value="0">';
+            $html.='<input type="text" name="login" class="form-control" name="mail" placeholder="Enter Login" required >';
+            $html.='</div><div class="form-group">';
+             $html.='<label for="mail">E mail:</label>';
+             $html.= "<input type='email' class='form-control' name='mail' placeholder='Enter Email' required>";
+              $html.='</div><div class="form-group">';
+              $html.='<label for="pwd">Password:</label>';
+              $html.= "<input type='password' class='form-control' name='password' placeholder='Enter password' required> </div>";
+             $html.= "<div class='form-group'>"
+                   . "<label for='pwd2'>Confirmer le password:</label>"
+                   . " <input type='password' class='form-control' name='password2' required></div>";
+             $html.= '<div class="form-group">'
+                .' <label for="sel1">Select list:</label>'
+                 .' <select class="form-control" id="sel1" name="role">'
+                .' <option value="visitor">visitor</option>'
+                .'<option value="administrator">administrator</option>'
+               .' <option value="editor">editor</option></select></div>';
+                    
+        }
+        else
+        {
+            foreach($data[0] as $user)
+            {
+                 $html.='<input type="hidden" name="id" value="'.$user->id.'">';
+                 $html.='<input type="text" name="login" class="form-control" name="mail" value="'.$user->username.'" required >';
+                $html.='</div><div class="form-group">';
+                 $html.='<label for="mail">E mail:</label>';
+                 $html.= "<input type='email' class='form-control' name='mail' value='".$user->email."' required>";
+                  $html.='</div><div class="form-group">';
+                 $html.= '<div class="form-group">'
+                    .' <label for="sel1">role :</label>'
+                     .' <select class="form-control" id="sel1" name="role">';
+                    switch ($user->role)
+                    {
+                        case 'visitor':
+                                           $html .= ' <option value="visitor" selected>visitor</option>'
+                                                       .'<option value="administrator">administrator</option>'
+                                                      .' <option value="editor">editor</option></select></div>';
+                                                    break;
+                        case 'administrator':
+                                             $html .= ' <option value="visitor" >visitor</option>'
+                                                       .'<option value="administrator" selected>administrator</option>'
+                                                      .' <option value="editor">editor</option></select></div>';     
+                                                          break;
+                        case 'editor':
+                                           $html .= ' <option value="visitor">visitor</option>'
+                               .'<option value="administrator">administrator</option>'
+                              .' <option value="editor" selected>editor</option></select></div>';
+                              break;
+                    }
+               
+            }
+            
+        }
+         $html.= "<input  type='submit' name='ok'  value='valider'  class='btn btn-info'>";     
+          $html.="</div></form></div>";
+        echo $html;
+         $content=  ob_get_clean();
+         include 'layout_admin.php';
+     }
+
 }

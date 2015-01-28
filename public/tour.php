@@ -50,7 +50,7 @@ $_session['login']=array();
                                 echo '<li><a href="/historique">historique</a></li>';
                                  if($_SESSION['user'][3]=='administrator')
                                 {
-                                    echo '<li><a href="/admin">admin</a></li>';
+                                    echo '<li><a href="/admin/liste/Produit">admin</a></li>';
                                 }
                                 echo '<li><a href="/logout">Log out</a></li>';
                             }

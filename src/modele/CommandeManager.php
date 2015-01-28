@@ -42,5 +42,16 @@ class CommandeManager extends EntiteManager
         return $data;
     }
  
+    public function allUser()
+    {
+         $query ="
+                SELECT commandes.*,users.username
+                FROM `commandes` inner join users
+                WHERE commandes.users_id=users.id";
+        // gestion des erreurs PDOException
+        $stmt = $this->pdo->query($query);
+        $data = $stmt->fetchall(\PDO::FETCH_OBJ);
+        return $data;
+    }
     
 }
