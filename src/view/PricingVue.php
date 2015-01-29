@@ -22,11 +22,12 @@ class PricingVue
             echo '</div> </section><div class="container">';
                       if ($menu!=null)
                         {
-                          echo "<ul>";
+                          echo '<ul class="pager">';
                      
                                 foreach ($menu as $unlien)
                                 {
-                                    echo '<li><a href="../pricing/'.$unlien->id.'"/>'.$unlien->title."</a></li>";
+                                   
+                                    echo '<li class="previous"><a href="../pricing/'.$unlien->id.'">'.$unlien->title.'</a></li>';
                                 }
                            echo "</ul>";
                         }        
@@ -59,8 +60,10 @@ class PricingVue
                       foreach ($produit as $unProduit)
                       {
                           echo '<br><br><br><div class="container">';
-                         echo '<a href="http://artspace.local/ajoutPanier/'.$unProduit->id.'">Ajouter au panier</a>';
-                          $_SESSION['page']='pricing/'.$unProduit->reference."/".$unProduit->id;
+                           echo  '<ul class="pager">';
+                           echo  '<li class="previous"><a href="/ajoutPanier/'.$unProduit->id.'">Ajouter au panier</a></li></ul>';
+//                         echo '<a href="http://artspace.local/ajoutPanier/'.$unProduit->id.'">Ajouter au panier</a>';
+               //           $_SESSION['page']='pricing/'.$unProduit->reference."/".$unProduit->id;
                          echo "<div class=espPricing>";
                           echo " <div class='blockNoir'>";
                                             echo " <h1>".$unProduit->reference."</h1>";

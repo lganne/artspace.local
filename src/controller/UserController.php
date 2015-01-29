@@ -41,6 +41,7 @@ class UserController
                $data=array('username'=>$_POST['login'],'password'=>$pwd,'email'=>$_POST['mail'],'salt'=>$salt,'token'=>$token,'role'=>$role);
                $this->user->save($data);
            }
+           $this->login();
     }
     
     public function login()
@@ -65,7 +66,7 @@ class UserController
               array_push($user,$detail);
             }
             $_SESSION['user']=$user;
-             header("Location: http://artspace.local/pricing/1"); 
+             header("Location: http://artspace.local/pricing/2"); 
             
         }
         else
@@ -78,7 +79,7 @@ class UserController
     public function logout()
     {
         $_SESSION['user']=[];
-         header("Location: http://artspace.local/pricing/1"); 
+         header("Location: http://artspace.local/pricing/2"); 
     }
     
    

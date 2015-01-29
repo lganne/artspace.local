@@ -26,7 +26,7 @@
             <nav>
 
                 <ul>
-                    <li><a href="/" id="select">retour au sites</a></li>
+                    <li><a href="/" >Retour au site</a></li>
                                            
                     <li><a href="/admin/liste/Produit">Produits</a></li>
                      <li><a href="/admin/liste/Rubrique">Rubriques</a></li>

@@ -19,21 +19,28 @@ class PanierVue
            }
             else 
             {
-                   $html.='<table border="solid 1 px black">';
-                    $html.='<th>Reference</th><th>contenu</th><th>prix</th><th></th>';
+                $cpt=0;
+                   $html.='<table class="table">';
+                    $html.='<thead><tr><th>Reference</th><th>contenu</th><th>prix</th><th></th></tr></thead><tbody>';
                foreach($donne as $Produit)
                 {
                     foreach($Produit as $unProduit)
                     {
 
-                        $html.='<tr><td>'.$unProduit->reference.'</td><td>'.$unProduit->contenu.'</td><td>'.$unProduit->prix.'</td><td><a href="/panierSup/'.$i.'">supprimer</a></td></tr>';
+                        $html.='<tr><td>'.$unProduit->reference.'</td><td>'.$unProduit->contenu.'</td>'
+                                . '<td>'.$unProduit->prix.'</td>'
+                                . '<td><a href="/panierSup/'.$i.'">supprimer</a></td></tr>';
                         $i++;
+                        $cpt+=$unProduit->prix;
                        }
                 }
-                 $html.='</table>';
-                 $html.=  '<a href="/validCommand">Valider la commande</a>';
+                $html.='<tr><td></td><td>Total</td><td>'.$cpt.' $ </td></tr>';
+                 $html.='</tbody></table>';
+                 $html.= '<ul class="pager">';
+                 $html.=  '<li class="previous"><a href="/validCommand">Valider </a></li>';
+                 $html.= '<li class="previous"><a href="/annulerCommand">Annuler</a></li></ul>';
             }
-      $html.='</div>';
+                 $html.='</div>';
        echo $html;
      
        $content= ob_get_clean();
@@ -45,40 +52,37 @@ class PanierVue
          ob_start();
          $i=0;
           $html= '<br><br><br><div class="container">';
-//         foreach($data as $unproduit)
-//         {
-//            $html.="<table border=solid 1px green><tr><td>$unproduit->id</td><td>$unproduit->date_created</td><td>  $unproduit->total</td>";
-//         
-            foreach ($tabdetail as $detail)
+          foreach ($tabdetail as $detail)
             {
+                
                 if  (is_array($detail))
                 {    
                         if (!empty($detail))
-                        { $html.='<table border="solid 1px black"><th>numero</th><th>Nom</th><th>detail</th><th>prix</th>'; }
+                        { 
+                            $html.=' <table class="table table-hover">'
+                                    . '<thead><th>Numero</th><th>Nom</th><th>Detail</th><th>Prix</th></thead><tbody>';
+                         }
                         foreach ($detail as $produit)
                        {
-                   //         var_dump($produit);
-                             $html.='<tr><td>'.$produit->commandes_id.'</td><td>'.$produit->reference.'</td><td>'.$produit->contenu.'</td><td>'.$produit->prix.'</td></tr>';
-                       }
-                       $html.="</table>";
+                            $html.='<tr><td>'.$produit->commandes_id.'</td><td>'.$produit->reference.'</td><td>'.$produit->contenu.'</td><td>'.$produit->prix.'</td></tr>';
+                        }
+                       $html.="</tbody></table>";
                  }
                  else 
                  {
                       if (\strpos($detail,"."))
                      {
-                         $html.=" <h4>Total : ".$detail."</h4>";
+                         $html.=" <label>Total : ".$detail."</label><br>";
                      }
                      else
                      {
                          $date = new \DateTime($detail);
-                         $html.=" <h4>Commande du : ".$date->format('d/m/Y H:i:s')."</h4>";
+                         $html.=" <label>Commande du : ".$date->format('d/m/Y H:i:s')."</label><br>";
                      }
                     
                  }
-     
- }
-                  
-         $html.='</div>';
+    }
+          $html.='</div>';
          echo $html;
           $content= ob_get_clean();
           include 'layout.php';

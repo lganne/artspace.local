@@ -70,6 +70,12 @@ class CommandeController {
            header('location:http://artspace.local/historique');
            
     }
+    
+    public function annulerCommand()
+    {
+        $_SESSION['panier']=[];
+        header('location:http://artspace.local/pricing/2');
+    }
           
     public function historique()
     {

@@ -23,14 +23,16 @@
             <!--  logo + menu -->
          
             <img src="http://artspace.local/img/header-footer/logo.png" id="logo" alt="logo Art Space"/>
-            <nav>
+          
+            
+                                                          
+           <nav>
 
                 <ul>
-                    <li><a href="/" id="select">Tour</a></li>
-                    <!--<li><a href="#">Templates</a></li>-->
-                    <!--<li><a href="#">Developers</a></li>-->
+                    <li><a href="/" >Tour</a></li>
+                    <li><a href="/pricing/2">Pricing</a></li>
                                      
-                    <li><a href="/pricing/1">Pricing</a></li>
+                   
                     <?php
                                       
                            
@@ -72,6 +74,8 @@
                     ?>
                     
                 </ul>
+                    <!--</div>-->
+               
             </nav>
 
         </header>

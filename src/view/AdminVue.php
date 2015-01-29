@@ -27,8 +27,12 @@ class AdminVue
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-         $html.=  '<a href="/admin/form/User/0">Ajouter</a>';
-        $html.="<table border=solid 1px black><tr><th>Nom</th><th>E-mail</th><th>Date de creation</th><th>Role</th><th></th><th></th></tr>";
+        $html.='<h2>Liste des utilisateurs</h2>';
+          $html.=  '<ul class="pager">';
+          $html.=  '<li class="previous"><a href="/admin/form/User/0">Ajouter </a></li></ul>';
+          $html.='<table class="table table-hover">';
+   
+        $html.="<thead><tr><th>Nom</th><th>E-mail</th><th>Date de creation</th><th>Role</th><th></th><th></th></tr></thead>";
         foreach ($data as $unUser)
         {
             $html.="<tr><td>".$unUser->username."</td><td>".$unUser->email."</td>"
@@ -52,8 +56,11 @@ class AdminVue
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-        $html.=  '<a href="/admin/form/Produit/0">Ajouter</a>';
-        $html.="<table border=solid 1px black><tr><th>Nom</th><th>detail</th><th>Prix</th><th></th><th></th></tr>";
+        $html.='<h2>Liste des produits</h2>';
+        $html.=  '<ul class="pager">';
+        $html.=  '<li class="previous"><a href="/admin/form/Produit/0">Ajouter </a></li></ul>';
+        $html.='<table class="table table-hover">';
+        $html.="<thead><tr><th>Nom</th><th>detail</th><th>Prix</th><th></th><th></th></tr></thead><tbody>";
         foreach ($data as $unUser)
         {
             $html.="<tr><td>".$unUser->reference."</td>"
@@ -62,7 +69,7 @@ class AdminVue
                     . '<td><a href="/admin/form/Produit/'.$unUser->id.'">Modifier</a></td>'
                     . '<td><a href="/admin/supProduit/'.$unUser->id.'">Supprimer</a></td></tr>';
         }
-         $html.="</table></div>";
+         $html.="</tbody></table></div>";
         echo $html;
          $content=  ob_get_clean();
          include 'layout_admin.php';
@@ -72,19 +79,22 @@ class AdminVue
     {
         ob_start();
         $html='<br><br><div class="container">';
-         $html.='<a href="/admin/form/Rubrique/0">Ajouter</a>';
-        if(!empty( $_SESSION['mess']))
+        $html.='<h2>Liste des rubriques</h2>';
+         $html.=  '<ul class="pager">';
+         $html.=  '<li class="previous"><a href="/admin/form/Rubrique/0">Ajouter </a></li></ul>';
+           if(!empty( $_SESSION['mess']))
         {
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-        $html.="<table border=solid 1px black><tr><th>Nom</th><th></th><th></th></tr>";
+         $html.='<table class="table table-hover">';
+        $html.="<thead><tr><th>Nom</th><th></th><th></th></tr></thead><tbody>";
         foreach ($data as $unUser)
         {
             $html.="<tr><td>".$unUser->title."</td>" . '<td><a href="/admin/form/Rubrique/'.$unUser->id.'">Modifier</a></td>'
                     . '<td><a href="/admin/supRubrique/'.$unUser->id.'">Supprimer</a></td></tr>';
          }
-         $html.="</table></div>";
+         $html.="</tbody></table></div>";
         echo $html;
          $content=  ob_get_clean();
          include 'layout_admin.php'; 
@@ -99,7 +109,9 @@ class AdminVue
             echo '<p>'.$_SESSION['mess'].'</p>';
             $_SESSION['mess']="";
         }
-        $html.="<table border=solid 1px black><tr><th>Numero</th><th>Login</th><th>Date</th><th>Total</th><th>Status</th<</tr>";
+        $html.='<h2>Liste des commandes</h2>';
+        $html.='<table class="table table-hover">';
+        $html.="<thead><tr><th>Numero</th><th>Login</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody>";
         foreach ($data as $unCde)
         {
             $date = new \DateTime($unCde->date_created);
@@ -110,7 +122,7 @@ class AdminVue
                     . "<td>".$unCde->status."</td>"
                     . '<td><a href="/admin/form/Commande/'.$unCde->id.'">Modifier</a></td></tr>';
          }
-         $html.="</table></div>";
+         $html.="</tbody></table></div>";
         echo $html;
          $content=  ob_get_clean();
          include 'layout_admin.php'; 
@@ -125,7 +137,9 @@ class AdminVue
         if(empty($data))
         {
             $html.='<input type="hidden" name="id" value="0">';
-            $html.='Nom<input type="text" name="titre" >';
+              $html.='<div class="form-group">';
+                $html.='<label for="titre">Titre:</label>';
+            $html.='<input type="text" class="form-control" name="titre" placeholder=" Nom de la rubrique" required></div>';
         }
 //        /**** modif **/
          else
@@ -135,7 +149,9 @@ class AdminVue
                 foreach($rub as $unRub)
                 {  
                     $html.='<input type="hidden" name="id" value="'.$unRub->id.'" >';
-                    $html.='Nom<input type="text" name="titre" value="'.$unRub->title.'" >';
+                    $html.='<div class="form-group">';
+                     $html.='<label for="titre">Titre:</label>';
+                    $html.= "<input type='texte' class='form-control'  name='titre' value='".$unRub->title."' ></div>";
                 }
             }
        }
@@ -150,26 +166,35 @@ class AdminVue
     {
        ob_start();
        $html='<br><br><div class="container">';
-       $html.='<form action="/admin/produit/enregistrement" method="post" >';
+       $html.='<form action="/admin/produit/enregistrement" method="post" class="form-horizontal" role="form">';
        /*** ajout **/
        if(count($data)==1)
         {
             $html.='<input type="hidden" name="id" value="0">';
-            $html.='Selectionner la rubrique<select name="rubrique">';
+//            $html.='Selectionner la rubrique<select name="rubrique">';
+             $html.='<div class="form-group">';
+            $html.='<label for="rubrique">Rubriques</label> <select class="form-control" name="rubrique">';
              foreach ($data as $rub)
              {
                  foreach($rub as $unRub)
                  { $html.= '<option value="'.$unRub->id.'">'.$unRub->title.'</option>';}
              }
-             $html.='</select><br>';
-             $html.='Nom<input type="text" name="reference" required><br>';
-             $html.='Detail<textarea  name="contenu" >séparer les élements par des virgules</textarea><br>';
-             $html.='Prix<input type="text" name="prix" ><br>';
+             $html.='</select></div>';
+             $html.='<div class="form-group">';
+             $html.='<label for="Nom">Nom : </label>';
+             $html.='<input type="text" name="reference" class="form-control" placeholder=" Nom" required></div>';
+             $html.='<div class="form-group">';
+             $html.='<label for="Detail">Detail : </label>';
+             $html.='<textarea  name="contenu" class="form-control" placeholder="" required >séparer les élements par des virgules</textarea></div>';
+             $html.='<div class="form-group">';
+             $html.='<label for="Prix">Prix : </label>';
+             $html.='<input type="text" name="prix" class="form-control" placeholder="Prix en $" required></div>';
         }
         else
         {
-                   $html.='Selectionner la rubrique<select name="rubrique">';
-                   foreach($data[1] as $prod)
+                    $html.='<div class="form-group">';
+                    $html.='<label for="name">Rubriques</label> <select class="form-control" name="rubrique">';
+                     foreach($data[1] as $prod)
                       {
                           foreach ($data[0] as $rub)
                             {
@@ -182,11 +207,17 @@ class AdminVue
                                   $html.= '<option value="'.$rub->id.'">'.$rub->title.'</option>';
                                  }
                             }
-                            $html.='</select><br>';
-                            $html.='<input type="hidden" name="id" value="'.$prod->id.'">';
-                            $html.='Nom<input type="text" name="reference"  value="'.$prod->reference.'"required><br>';
-                            $html.='Detail<textarea  name="contenu" value="'.$prod->contenu.'">'.$prod->contenu.'</textarea><br>';
-                            $html.='Prix<input type="text" name="prix" value="'.$prod->prix.'"><br>';
+                            $html.='</select></div>';
+                             $html.='<input type="hidden" name="id" value="'.$prod->id.'">';
+                            $html.='<div class="form-group">';
+                            $html.='<label for="Nom">Nom : </label>';
+                            $html.='<input type="text" name="reference"  value="'.$prod->reference.'"  class="form-control" required></div>';
+                            $html.='<div class="form-group">';
+                            $html.='<label for="Detail">Detail : </label>';
+                            $html.='<textarea  name="contenu" value="'.$prod->contenu.'"  class="form-control">'.$prod->contenu.'</textarea></div>';
+                            $html.='<div class="form-group">';
+                            $html.='<label for="Prix">Prix : </label>';
+                            $html.='<input type="text" name="prix" value="'.$prod->prix.'"  class="form-control"></div>';
                       }
            }
           $html.='<input type="submit" name="submit" value="valider" >';
@@ -278,12 +309,16 @@ class AdminVue
              foreach ($data[0] as $cde )
              {
                  $html.='<h3>Commande N° '.$cde->id.'</h3></br>';
-            $html.='<form action="/admin/cde/enregistrement" method="post" class="form-horizontal" role="form">';
+                $html.='<form action="/admin/cde/enregistrement" method="post" class="form-horizontal" role="form">';
                   $date = new \DateTime($cde->date_created);
                  $html.='<input type="hidden" name="id" value="'.$cde->id.'">';
-                  $html.='<label for="">'.$date->format('d/m/Y H:i').'</label><br>';
-                    $html.='<label for="">Total : '.$cde->total.' $</label><br>';
-                  $html.= '<div class="form-group">'
+                 $html.='<div class="form-group">';
+                  $html.='<label for="Date">Date:</label>';
+              $html.= "<input type='texte' class='form-control' name='mail' value='".$date->format('d/m/Y H:i')."' disabled></div>";
+              $html.='<div class="form-group">';
+                  $html.='<label for="total">Total:</label>';
+              $html.= "<input type='texte' class='form-control' name='mail' value='".$cde->total."' disabled></div>";
+              $html.= '<div class="form-group">'
                             .' <label for="sel1">Status:</label>'
                              .' <select class="form-control" id="sel1" name="status">'
                              .' <option value="valider">valider</option>'

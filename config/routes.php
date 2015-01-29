@@ -56,6 +56,10 @@ return [
         'pattern' => '\/validCommand',
         'connect' => 'controller\CommandeController:validCommand'
         ],
+         'CommandeController_annulerCommand' => [
+        'pattern' => '\/annulerCommand',
+        'connect' => 'controller\CommandeController:annulerCommand'
+        ],
       'CommandeController_historique' => [
         'pattern' => '\/historique',
         'connect' => 'controller\CommandeController:historique'

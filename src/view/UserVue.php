@@ -37,10 +37,14 @@ class UserVue {
     {
          ob_start();
         $html='<br><br><div class="container">';
-        $html.=  ' <form  method="post" action="/loginValidation">';
-         $html.= " Login :  <input type='text' name='login'  required> <br>";
-         $html.= "Password: <input type='password' name='password' required><br>";
-         $html.= "<input type='submit' name='ok'  value='valider'>";           
+        $html.=  ' <form  method="post" action="/loginValidation" class="form-horizontal" role="form">';
+         $html.='<div class="form-group">';
+         $html.='<label for="login">Login:</label>';
+          $html.= "<input type='text' class='form-control' name='login' placeholder='Enter login' required></div>";
+           $html.='<div class="form-group">';
+          $html.='<label for="pwd">Password:</label>';
+           $html.= "<input type='password' class='form-control' name='password' placeholder='Enter password' required> </div>";
+         $html.= "<input type='submit' name='ok'  value='valider' class='btn btn-info'>";           
          $html.="</form></div>";
           
           echo $html;

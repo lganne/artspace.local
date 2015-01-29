@@ -17,6 +17,7 @@ $_session['login']=array();
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/normalize.min.css">
+         <link rel="stylesheet" href="http://artspace.local/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" media="screen and (max-device-width: 640px)" href="css/mobile.css" type="text/css" />
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
@@ -40,7 +41,7 @@ $_session['login']=array();
                     <li><a href="tour.php" id="select">Tour</a></li>
 <!--                    <li><a href="#">Templates</a></li>
                     <li><a href="#">Developers</a></li>-->
-                    <li><a href="http://artspace.local/pricing/1">Pricing</a></li>
+                    <li><a href="/pricing/2">Pricing</a></li>
                     <?php
                              if (!empty($_SESSION['user']))
                             {

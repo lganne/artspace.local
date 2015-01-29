@@ -147,11 +147,8 @@ textarea {
         text-shadow: none !important;
     }
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
+    
+ 
     a[href]:after {
         content: " (" attr(href) ")";
     }
@@ -246,7 +243,7 @@ textarea {
     float:right;
     width: auto;
     padding-top: 25px;
-    padding-right: 30px;
+    padding-right: 10px;
     
   }
   
@@ -259,11 +256,11 @@ nav li
 nav ul li a
 {
     display:block;
-    width:80px;
+    width:150px;
     color:#B8B8B8;
     text-decoration:none;
     text-align:center;
-    padding:32px;
+    padding:12px;
     letter-spacing: .2em;
     font-weight: bold;
     
